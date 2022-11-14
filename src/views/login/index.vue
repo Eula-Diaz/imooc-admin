@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form">
+    <el-form class="login-form" :model="loginForm" :rules="loginRules">
       <div class="title-container">
         <h3 class="title">登录</h3>
       </div>
@@ -8,15 +8,28 @@
         <span class="svg-container">
           <svg-icon icon="user" />
         </span>
-        <el-input name="username" placeholder="username" type="text"></el-input>
+        <el-input
+          v-model="loginForm.username"
+          name="username"
+          placeholder="username"
+          type="text"
+        ></el-input>
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon="password" />
         </span>
-        <el-input name="password" placeholder="password"></el-input>
+        <el-input
+          v-model="loginForm.password"
+          name="password"
+          placeholder="password"
+          :type="passwordType"
+        ></el-input>
         <span class="show-pwd">
-          <svg-icon icon="eye" />
+          <svg-icon
+            :icon="passwordType === 'password' ? 'eye' : 'eye-open'"
+            @click="onChangePwdType"
+          />
         </span>
       </el-form-item>
       <el-button type="primary" style="width: 100%">登录</el-button>
@@ -25,7 +38,40 @@
 </template>
 
 <script setup>
-import {} from 'vue'
+import { ref } from 'vue'
+import { validatePassword } from './rules'
+
+const loginForm = ref({
+  username: 'super-admin',
+  password: '123456'
+})
+
+const loginRules = ref({
+  username: [
+    {
+      required: true,
+      trigger: 'blur',
+      message: '用户名为必填项'
+    }
+  ],
+  password: [
+    {
+      required: true,
+      trigger: 'blur',
+      validator: validatePassword()
+    }
+  ]
+})
+
+// 处理密码框文本显示状态
+const passwordType = ref('password')
+const onChangePwdType = () => {
+  if (passwordType.value === 'password') {
+    passwordType.value = 'text'
+  } else {
+    passwordType.value = 'password'
+  }
+}
 </script>
 
 <style lang="scss" scoped>
