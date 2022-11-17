@@ -7,7 +7,8 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'https://api.imooc-admin.lgdsunday.club/',
+        target:
+          'https://www.fastmock.site/mock/c0f135db313b68f8e10313563467d996/',
         changeOrigin: true
       }
     }
