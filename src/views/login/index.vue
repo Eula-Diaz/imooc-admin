@@ -50,6 +50,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { validatePassword } from './rules'
 
@@ -89,6 +90,7 @@ const onChangePwdType = () => {
 const loading = ref(false)
 const loginFormRef = ref(null)
 const store = useStore()
+const router = useRouter()
 const handleLogin = () => {
   loginFormRef.value.validate((valid) => {
     if (!valid) return
@@ -98,6 +100,7 @@ const handleLogin = () => {
       .then(() => {
         loading.value = false
         // TODO: 登录后操作
+        router.push('/')
       })
       .catch((err) => {
         console.log(err)
