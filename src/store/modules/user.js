@@ -37,7 +37,7 @@ export default {
     },
     async getUserInfo(context) {
       const res = await getUserInfo()
-      context.commit('user/setUserInfo', res)
+      context.commit('setUserInfo', res)
       return res
     }
   }
