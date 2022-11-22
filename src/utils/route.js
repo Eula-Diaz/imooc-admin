@@ -10,6 +10,7 @@ const getChildrenRoutes = (routes) => {
       result.push(...route.children)
     }
   })
+  return result
 }
 
 /**
