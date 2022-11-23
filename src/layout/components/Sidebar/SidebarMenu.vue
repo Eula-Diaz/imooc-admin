@@ -5,6 +5,7 @@
     :text-color="$store.getters.cssVar.menuText"
     :active-text-color="$store.getters.cssVar.menuActiveText"
     :default-active="activeMenu"
+    :collapse="!$store.getters.sidebarOpened"
     router
   >
     <sidebar-item
