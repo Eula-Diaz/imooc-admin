@@ -7,7 +7,8 @@
       :rules="loginRules"
     >
       <div class="title-container">
-        <h3 class="title">登录</h3>
+        <h3 class="title">{{ $t('msg.login.title') }}</h3>
+        <lang-select class="lang-select" effect="light" />
       </div>
       <el-form-item prop="username">
         <span class="svg-container">
@@ -42,7 +43,7 @@
         style="width: 100%"
         :loading="loading"
         @click="handleLogin"
-        >登录</el-button
+        >{{ $t('msg.login.loginBtn') }}</el-button
       >
     </el-form>
   </div>
@@ -53,18 +54,21 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { validatePassword } from './rules'
+import LangSelect from '@/components/LangSelect'
+import { useI18n } from 'vue-i18n'
 
 const loginForm = ref({
   username: 'super-admin',
   password: '123456'
 })
 
+const i18n = useI18n()
 const loginRules = ref({
   username: [
     {
       required: true,
       trigger: 'blur',
-      message: '用户名为必填项'
+      message: i18n.t('msg.login.usernameRule')
     }
   ],
   password: [
@@ -164,6 +168,16 @@ $cursor: #fff;
       margin: 0px auto 40px;
       text-align: center;
       font-weight: bold;
+    }
+    ::v-deep .lang-select {
+      position: absolute;
+      top: 4px;
+      right: 0;
+      background-color: white;
+      font-size: 22px;
+      padding: 4px;
+      border-radius: 4px;
+      cursor: pointer;
     }
   }
   .show-pwd {
