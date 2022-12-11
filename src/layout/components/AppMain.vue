@@ -77,17 +77,4 @@ watchSwitchLang(() => {
   padding: 104px 20px 20px 20px;
   box-sizing: border-box;
 }
-
-.fade-transform-leave-active,
-.fade-transform-enter-active {
-  transition: all 0.5s;
-}
-.fade-transform-enter-from {
-  opacity: 0;
-  transform: translateX(-30px);
-}
-.fade-transfrom-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
 </style>
