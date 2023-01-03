@@ -1,7 +1,5 @@
 <template>
   <div></div>
 </template>
-<script setup>
-import {} from 'vue'
-</script>
+<script setup></script>
 <style lang="scss" scoped></style>

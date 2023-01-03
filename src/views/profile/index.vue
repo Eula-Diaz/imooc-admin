@@ -2,7 +2,7 @@
   <div class="my-container">
     <el-row>
       <el-col :span="6">
-        <project-card class="user-card"></project-card>
+        <project-card class="user-card" :features="featureData"></project-card>
       </el-col>
       <el-col :span="18">
         <el-card>
@@ -27,10 +27,18 @@
 import { ref } from 'vue'
 import ProjectCard from './components/ProjectCard'
 import Chapter from './components/Chapter'
+// eslint-disable-next-line no-unused-vars
 import Feature from './components/Feature'
 import Author from './components/Author'
+import { feature } from '@/api/user'
 
 const activeName = ref('feature')
+
+const featureData = ref([])
+const getFeatureData = async () => {
+  featureData.value = await feature()
+}
+getFeatureData()
 </script>
 
 <style lang="scss" scoped>
