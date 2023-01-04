@@ -39,6 +39,7 @@ const featureData = ref([])
 const getFeatureData = async () => {
   featureData.value = await feature()
 }
+getFeatureData()
 watchSwitchLang(getFeatureData)
 </script>
 
