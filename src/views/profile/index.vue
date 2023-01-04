@@ -31,6 +31,7 @@ import Chapter from './components/Chapter'
 import Feature from './components/Feature'
 import Author from './components/Author'
 import { feature } from '@/api/user'
+import { watchSwitchLang } from '@/utils/i18n'
 
 const activeName = ref('feature')
 
@@ -38,7 +39,7 @@ const featureData = ref([])
 const getFeatureData = async () => {
   featureData.value = await feature()
 }
-getFeatureData()
+watchSwitchLang(getFeatureData)
 </script>
 
 <style lang="scss" scoped>
